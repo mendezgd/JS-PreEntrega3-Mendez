@@ -36,6 +36,7 @@ const inputBuscar = document.querySelector('input[type="search"]');
 const botonBuscar = document.getElementById('buscar');
 const productosDin = document.getElementById('productosDin');
 
+// funcion crea cards //
 function crearCard(el) {
     productosDin.innerHTML = "";
     let htmlCard = `
@@ -47,6 +48,7 @@ function crearCard(el) {
                 <h5 class="precio">su precio es de: $${el.precio}</h5>
                 <p class="stock">en stock: ${el.stock}</p>
                 <p class="descripcion">${el.descripcion}</p>
+                <a href="#" class="btn btn-primary">Agregar al carro</a>
             </div>
          </div>
     </div>`;
