@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Lobster&family=Oswald:wght@200&family=Press+Start+2P&family=Special+Elite&display=swap");
+
+body {
+    background-color: rgb(255, 220, 133);
+}
+h1 {
+    text-align: left;
+    background-color: blanchedalmond;
+    padding-left: 100px;
+    font-family: lobster;
+}
+
+h2 {
+    font-family: oswald;
+    text-align:center ;
+    text-decoration: underline;
+}
+
+p {
+    font-family: roboto;
+}
+
+.buscador {
+    margin: 20px;
+}
