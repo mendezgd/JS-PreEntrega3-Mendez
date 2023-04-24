@@ -42,13 +42,13 @@ function crearCard(el) {
     let htmlCard = `
     <div class="col">
         <div class="card" style="width: 18rem; ">
-            <img src=" ./media/${el.img}" alt="${el.nombre} class="card-img-top">
+            <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top">
             <div class="card-body">
                 <h4>${el.nombre}</h4>
                 <h5 class="precio">su precio es de: $${el.precio}</h5>
                 <p class="stock">en stock: ${el.stock}</p>
                 <p class="descripcion">${el.descripcion}</p>
-                <a href="#" class="btn btn-primary">Agregar al carro</a>
+                <a href="./html/carrito.html" target="_blank" class="btn btn-primary">Agregar al carro</a>
             </div>
          </div>
     </div>`;
@@ -60,3 +60,10 @@ botonBuscar.addEventListener('click', () => {
     console.log(found);
     crearCard(found);
 });
+
+
+showInput = addEventListener('input', ()=>{
+    let found= buscarNombre(arrProdFijo, inputBuscar.value);
+    console.log(found);
+    crearCard(found);
+})

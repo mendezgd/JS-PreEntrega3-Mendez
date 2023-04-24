@@ -23,3 +23,12 @@ p {
 .buscador {
     margin: 20px;
 }
+
+.card {
+    border-radius: 2%;
+}
+
+.card img {
+    border-radius: 1%;
+}
+
