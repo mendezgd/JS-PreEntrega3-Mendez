@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Lobster&family=Oswald:wght@200&family=Press+Start+2P&family=Special+Elite&display=swap");
 
 body {
-    background-color: rgb(255, 220, 133);
+    background-color:#8ECAE6;
 }
 h1 {
     text-align: left;
-    background-color: blanchedalmond;
+    background-color: #fac85b;
     padding-left: 100px;
     font-family: lobster;
 }
@@ -26,9 +26,19 @@ p {
 
 .card {
     border-radius: 2%;
+
 }
 
+.card h5{
+    text-decoration: underline;
+    
+    
+}
 .card img {
-    border-radius: 1%;
+    border-radius: 2%;
+}
+
+.card-body {
+    background-color:#fac85b;
 }
 

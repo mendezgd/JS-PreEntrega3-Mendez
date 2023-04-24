@@ -13,13 +13,11 @@ let arrProdFiltrado = [];
 const iva = 1.21
 let total = 0
 
-// declaracion de constructor y funciones //
-class Producto {
-    constructor(nombre, stock, precio) {
-        this.nombre = nombre;
-        this.stock = parseInt(stock);
-        this.precio = parseFloat(precio);
-    }
+// filtrado de precio // 
+function buscarPrecio(arr, filtro) {
+    return arr.find((el) => {
+        return el.precio <= filtro
+    })
 }
 
 // filtrado de nombre //
@@ -32,9 +30,11 @@ const buscarNombre = (arr, filtro) => {
 }
 
 // buscador //
-const inputBuscar = document.querySelector('input[type="search"]');
-const botonBuscar = document.getElementById('buscar');
 const productosDin = document.getElementById('productosDin');
+const inputBuscar = document.querySelector('input[type="search"]');
+const inputPrecio = document.querySelector('input[type="number"]')
+const botonAgregar = document.querySelector('#submit');
+const carro = document.querySelector('#carro');
 
 // funcion crea cards //
 function crearCard(el) {
@@ -45,25 +45,43 @@ function crearCard(el) {
             <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top">
             <div class="card-body">
                 <h4>${el.nombre}</h4>
-                <h5 class="precio">su precio es de: $${el.precio}</h5>
+                <h5 class="precio">precio : $${el.precio}</h5>
                 <p class="stock">en stock: ${el.stock}</p>
                 <p class="descripcion">${el.descripcion}</p>
-                <a href="./html/carrito.html" target="_blank" class="btn btn-primary">Agregar al carro</a>
             </div>
          </div>
     </div>`;
     productosDin.innerHTML = htmlCard;
 }
 
-botonBuscar.addEventListener('click', () => {
+
+showInput = addEventListener('input', () => {
+    let found = buscarNombre(arrProdFijo, inputBuscar.value);
+    crearCard(found);
+})
+
+
+// funcion crea cartitas carro //
+
+function crearCarrito(el) {
+    carro.innerHTML = ""
+    let htmlCard = `    
+    <div class="col">
+        <div class="card" style="width: 18rem; ">
+            <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top">
+            <div class="card-body">
+                <h4>${el.nombre}</h4>
+                <h5 class="precio">precio : $${el.precio}</h5>
+                <p class="stock">en stock: ${el.stock}</p>
+                <p class="descripcion">${el.descripcion}</p>
+            </div>
+        </div>
+    </div>`;
+    carro.innerHTML = htmlCard;
+}
+
+paraCarro = addEventListener('click', ()=> {
     let found = buscarNombre(arrProdFijo, inputBuscar.value)
     console.log(found);
-    crearCard(found);
-});
-
-
-showInput = addEventListener('input', ()=>{
-    let found= buscarNombre(arrProdFijo, inputBuscar.value);
-    console.log(found);
-    crearCard(found);
+    
 })
