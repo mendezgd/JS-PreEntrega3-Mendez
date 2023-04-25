@@ -13,13 +13,6 @@ let arrProdFiltrado = [];
 const iva = 1.21
 let total = 0
 
-// filtrado de precio // 
-function buscarPrecio(arr, filtro) {
-    return arr.find((el) => {
-        return el.precio <= filtro
-    })
-}
-
 // filtrado de nombre //
 const buscarNombre = (arr, filtro) => {
     const buscar = arr.find((el) => {
@@ -32,10 +25,9 @@ const buscarNombre = (arr, filtro) => {
 // buscador //
 const productosDin = document.getElementById('productosDin');
 const inputBuscar = document.querySelector('input[type="search"]');
-const botonAgregar = document.querySelector('#submit');
-const carro = document.querySelector('#carro');
+const botonAgregar = document.getElementById('submit');
+const listaCarrito = document.getElementById('listaCarrito');
 
-console.log(inputBuscar);
 
 // funcion crea cards //
 function crearCard(el) {
@@ -55,41 +47,30 @@ function crearCard(el) {
     productosDin.innerHTML = htmlCard;
 }
 
-
 showInput = addEventListener('input', () => {
     let found = buscarNombre(arrProdFijo, inputBuscar.value);
     crearCard(found);
 })
 
 
-// funcion crea cartitas carro //
+// funcion crea lista carro //
 
-function crearCarrito(el) {
-    carro.innerHTML = ""
-    let htmlCard = `    
-    <div class="col">
-        <div class="card" style="width: 18rem; ">
-            <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top">
-            <div class="card-body">
-                <h4>${el.nombre}</h4>
-                <h5 class="precio">precio : $${el.precio}</h5>
-                <p class="stock">en stock: ${el.stock}</p>
-                <p class="descripcion">${el.descripcion}</p>
-            </div>
-        </div>
-    </div>`;
-    carro.innerHTML = htmlCard;
-
+function crearLista(el) {
+    listaCarrito.innerHTML = "";
+    let htmlCard = `
+    <div class="col-3">
+        <p>${el.nombre}</p>
+        <p>${el.precio}</p>
+        <p>total: ${total + el.precio}
+    </div>
+`;
+    listaCarrito.innerHTML = htmlCard;
 }
 
-// agrega objetos al carrito // 
-agregaProd = addEventListener("submit", (e) => {
+agregarBoton = addEventListener('submit', (e) => {
     e.preventDefault();
-    let found = buscarNombre(arrProdFijo, inputBuscar.value)
-    console.log(found);
+    let found = buscarNombre(arrProdFijo, inputBuscar.value);
+    crearLista(found);
+});
 
-})
 
-/* localStorage.setItem("productos", JSON.stringify(arrProdFijo));
-const prodLocal = localStorage.getItem("productos");
-console.log(prodLocal); */
