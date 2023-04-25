@@ -32,9 +32,10 @@ const buscarNombre = (arr, filtro) => {
 // buscador //
 const productosDin = document.getElementById('productosDin');
 const inputBuscar = document.querySelector('input[type="search"]');
-const inputPrecio = document.querySelector('input[type="number"]')
 const botonAgregar = document.querySelector('#submit');
 const carro = document.querySelector('#carro');
+
+console.log(inputBuscar);
 
 // funcion crea cards //
 function crearCard(el) {
@@ -78,10 +79,17 @@ function crearCarrito(el) {
         </div>
     </div>`;
     carro.innerHTML = htmlCard;
+
 }
 
-paraCarro = addEventListener('click', ()=> {
+// agrega objetos al carrito // 
+agregaProd = addEventListener("submit", (e) => {
+    e.preventDefault();
     let found = buscarNombre(arrProdFijo, inputBuscar.value)
     console.log(found);
-    
+
 })
+
+/* localStorage.setItem("productos", JSON.stringify(arrProdFijo));
+const prodLocal = localStorage.getItem("productos");
+console.log(prodLocal); */
