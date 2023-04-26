@@ -56,3 +56,10 @@ footer {
     width: 100%;
     background-color: #dad7cd;
 }
+
+#listaCarrito {
+    font-weight: bold;
+    background-color: rgb(152, 235, 135);
+    text-align: center;
+    border: 1px solid black;
+}

@@ -13,6 +13,7 @@ let arrProdFiltrado = [];
 const iva = 1.21
 let total = 0
 
+
 // filtrado de nombre //
 const buscarNombre = (arr, filtro) => {
     const buscar = arr.find((el) => {
@@ -27,7 +28,6 @@ const productosDin = document.getElementById('productosDin');
 const inputBuscar = document.querySelector('input[type="search"]');
 const botonAgregar = document.getElementById('submit');
 const listaCarrito = document.getElementById('listaCarrito');
-
 
 // funcion crea cards //
 function crearCard(el) {
@@ -52,7 +52,6 @@ showInput = addEventListener('input', () => {
     crearCard(found);
 })
 
-
 // funcion crea lista carro //
 
 function crearLista(el) {
@@ -60,17 +59,18 @@ function crearLista(el) {
     let htmlCard = `
     <div class="col-3">
         <p>${el.nombre}</p>
-        <p>${el.precio}</p>
-        <p>total: ${total + el.precio}
+        <p>precio: $${el.precio}, el total es de: $${total += el.precio}</p>
     </div>
 `;
     listaCarrito.innerHTML = htmlCard;
 }
 
+// funcion agrega al carro // 
+
 agregarBoton = addEventListener('submit', (e) => {
     e.preventDefault();
     let found = buscarNombre(arrProdFijo, inputBuscar.value);
+    arrProdFiltrado.push(found);
+    console.log(arrProdFiltrado);
     crearLista(found);
 });
-
-
