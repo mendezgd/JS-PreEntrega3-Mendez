@@ -48,6 +48,9 @@ p {
     background-color: #fac85b;
 }
 
+.card-columns {
+      column-count: 4;
+  }
 
 footer {
     display: block;
@@ -62,4 +65,10 @@ footer {
     background-color: rgb(152, 235, 135);
     text-align: center;
     border: 1px solid black;
+    margin-top: 10px;
 }
+
+#productosDin {
+    margin-bottom: 20px;
+}
+

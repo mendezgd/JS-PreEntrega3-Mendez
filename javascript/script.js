@@ -10,13 +10,20 @@ const arrProdFijo = [
 ];
 
 let arrProdFiltrado = [];
+let arrCarrito = [];
 const iva = 1.21
 let total = 0
-
+let local = localStorage.getItem("carrito");
+let carrito = JSON.parse(local);
+if (carrito) {
+    if (carrito.items) {
+        arrCarrito = carrito.items
+    };
+}
 
 // filtrado de nombre //
 const buscarNombre = (arr, filtro) => {
-    const buscar = arr.find((el) => {
+    const buscar = arr.filter((el) => {
         let minus = el.nombre.toLowerCase();
         return minus.includes(filtro.toLowerCase());
     })
@@ -26,51 +33,68 @@ const buscarNombre = (arr, filtro) => {
 // buscador //
 const productosDin = document.getElementById('productosDin');
 const inputBuscar = document.querySelector('input[type="search"]');
-const botonAgregar = document.getElementById('submit');
+const botonesAgregar = document.getElementsByClassName('agregar');
 const listaCarrito = document.getElementById('listaCarrito');
 
 // funcion crea cards //
 function crearCard(el) {
-    productosDin.innerHTML = "";
     let htmlCard = `
-    <div class="col">
-        <div class="card" style="width: 18rem; ">
+   
+        <div class="card">
             <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top">
             <div class="card-body">
                 <h4>${el.nombre}</h4>
                 <h5 class="precio">precio : $${el.precio}</h5>
                 <p class="stock">en stock: ${el.stock}</p>
                 <p class="descripcion">${el.descripcion}</p>
+                <button value="${el.id}" class="btn btn-primary agregar">Agregar al carro</button>
             </div>
-         </div>
+
     </div>`;
-    productosDin.innerHTML = htmlCard;
+    return htmlCard;
 }
 
 showInput = addEventListener('input', () => {
-    let found = buscarNombre(arrProdFijo, inputBuscar.value);
-    crearCard(found);
+    let items = buscarNombre(arrProdFijo, inputBuscar.value);
+    productosDin.innerHTML = "";
+    for (const item of items) {
+
+        productosDin.innerHTML += crearCard(item);
+    }
+    agregarListener();
 })
 
-// funcion crea lista carro //
+function iniciarItems() {
+    productosDin.innerHTML = "";
+    for (const item of arrProdFijo) {
 
-function crearLista(el) {
-    listaCarrito.innerHTML = "";
-    let htmlCard = `
-    <div class="col-3">
-        <p>${el.nombre}</p>
-        <p>precio: $${el.precio}, el total es de: $${total += el.precio}</p>
-    </div>
-`;
-    listaCarrito.innerHTML = htmlCard;
+        productosDin.innerHTML += crearCard(item);
+    }
+    agregarListener();
 }
 
-// funcion agrega al carro // 
+// boton agrega al carro // 
 
-agregarBoton = addEventListener('submit', (e) => {
-    e.preventDefault();
-    let found = buscarNombre(arrProdFijo, inputBuscar.value);
-    arrProdFiltrado.push(found);
-    console.log(arrProdFiltrado);
-    crearLista(found);
-});
+eventoBoton = function (e) {
+    let found = buscarId(arrProdFijo, e.target.value);
+    arrCarrito.push(found);
+    let carrito = { items: arrCarrito, total: 200 };
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert("item agregado");
+};
+
+function agregarListener() {
+    let botonesAgregar = document.getElementsByClassName('agregar');
+    for (const boton of botonesAgregar) {
+        boton.addEventListener('click', eventoBoton);
+    }
+}
+
+const buscarId = (arr, filtro) => {
+    const buscar = arr.find((el) => {
+        return el.id == filtro
+    })
+    return buscar
+}
+
+iniciarItems();
