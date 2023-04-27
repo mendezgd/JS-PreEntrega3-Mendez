@@ -1,15 +1,12 @@
 let local = localStorage.getItem("carrito");
 let carrito = JSON.parse(local);
 let campoTotal = document.getElementById('total');
-let carroItems = document.getElementById('carro_items');
+let arrCarrito = [];
 
 if (carrito) {
     campoTotal.innerHTML = carrito.total
-    for (const i of carrito.items ) {
+    arrCarrito = carrito.items
 
-        carroItems.innerHTML += itemHtml(i);
-        
-    }
 }
 
 function itemHtml(el) {
@@ -35,3 +32,38 @@ function itemHtml(el) {
     return cardItem;
 }
 
+eventoBoton = function (e) {
+    arrCarrito = removerId(arrCarrito, e.target.value);
+    console.log(e.target.value);
+    let carrito = { items: arrCarrito, total: 200 };
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    refrescarItems();
+};
+
+const removerId = (arr, filtro) => {
+    const buscar = arr.filter((el) => {
+        return el.id != filtro
+    })
+    return buscar
+}
+
+function refrescarItems() {
+    let carroItems = document.getElementById('carro_items');
+    carroItems.innerHTML = "";
+    for (const i of arrCarrito) {
+
+        carroItems.innerHTML += itemHtml(i);
+
+    }
+    agregarListener();
+}
+
+function agregarListener() {
+    let botonesBorrar = document.getElementsByClassName('borrar');
+    for (const boton of botonesBorrar) {
+        boton.addEventListener('click', eventoBoton);
+    }
+}
+
+
+refrescarItems();
