@@ -39,18 +39,17 @@ const listaCarrito = document.getElementById('listaCarrito');
 // funcion crea cards //
 function crearCard(el) {
     let htmlCard = `
-   
-        <div class="card">
-            <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top">
-            <div class="card-body">
-                <h4>${el.nombre}</h4>
-                <h5 class="precio">precio : $${el.precio}</h5>
-                <p class="stock">en stock: ${el.stock}</p>
-                <p class="descripcion">${el.descripcion}</p>
-                <button value="${el.id}" class="btn btn-primary agregar">Agregar al carro</button>
-            </div>
-
-    </div>`;
+                <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top" width="300px" height="250px" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${el.nombre}</h5>
+                        <p class="card-text">${el.descripcion}</p>
+                        <button value="${el.id}" class="btn btn-primary agregar">Agregar al carro</button>
+                        <p>Precio: $${el.precio}</p>
+                    </div>
+                </div>
+            </div>`;
     return htmlCard;
 }
 
