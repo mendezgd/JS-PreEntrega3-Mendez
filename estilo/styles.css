@@ -29,20 +29,6 @@ p {
     margin: 20px;
 }
 
-.card {
-    border-radius: 2%;
-
-}
-
-.card h5 {
-    text-decoration: underline;
-
-}
-
-.card img {
-    border-radius: 2%;
-}
-
 .card-body {
     background-color: #fac85b;
 }
@@ -53,14 +39,6 @@ footer {
     position: absolute;
     width: 100%;
     background-color: #dad7cd;
-}
-
-#listaCarrito {
-    font-weight: bold;
-    background-color: rgb(152, 235, 135);
-    text-align: center;
-    border: 1px solid black;
-    margin-top: 10px;
 }
 
 #productosDin {
