@@ -79,7 +79,7 @@ eventoBoton = function (e) {
     arrCarrito.push(found);
     let carrito = { items: arrCarrito, total: 200 };
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert("item agregado");
+    
 };
 
 function agregarListener() {
