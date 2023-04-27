@@ -1,12 +1,13 @@
+// declaraciones //
 let local = localStorage.getItem("carrito");
 let carrito = JSON.parse(local);
 let arrCarrito = [];
-
+// checkeo si la variable en el storage esta vacia, porque sino da error //
 if (carrito) {
     arrCarrito = carrito.items
 
 }
-
+//funcion crea cartas en carro //
 function itemHtml(el) {
     cardItem = `
             <div class="card m-1">
@@ -30,6 +31,7 @@ function itemHtml(el) {
     return cardItem;
 }
 
+// evento del boton borrar //
 eventoBoton = function (e) {
     arrCarrito = removerId(arrCarrito, e.target.value);
     let carrito = { items: arrCarrito};
@@ -37,6 +39,7 @@ eventoBoton = function (e) {
     refrescarItems();
 };
 
+// elimino de la lista por ID //
 const removerId = (arr, filtro) => {
     const buscar = arr.filter((el) => {
         return el.id != filtro
@@ -44,6 +47,7 @@ const removerId = (arr, filtro) => {
     return buscar
 }
 
+// refresca lista de items en carrito y recalcula el total //
 function refrescarItems() {
     let carroItems = document.getElementById('carro_items');
     let total = 0;
@@ -61,12 +65,12 @@ function refrescarItems() {
     agregarListener();
 }
 
+// agrega listeners a todos los botones //
 function agregarListener() {
     let botonesBorrar = document.getElementsByClassName('borrar');
     for (const boton of botonesBorrar) {
         boton.addEventListener('click', eventoBoton);
     }
 }
-
 
 refrescarItems();

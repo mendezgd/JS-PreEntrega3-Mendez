@@ -1,3 +1,4 @@
+//declaraciones//
 const arrProdFijo = [
     { id: 1, nombre: "Ak47", stock: 10, precio: 2500, img: "prod1.jpg", descripcion: "El AK-47 es un fusil de asalto soviético diseñado por Mijaíl Kaláshnikov en 1947" },
     { id: 2, nombre: "M4A1", stock: 5, precio: 3100, img: "asalto1.jpg", descripcion: "La M4A1 es una carabina de asalto estadounidense que utiliza munición 5,56." },
@@ -30,7 +31,7 @@ const buscarNombre = (arr, filtro) => {
     return buscar
 }
 
-// buscador //
+// get y query html //
 const productosDin = document.getElementById('productosDin');
 const inputBuscar = document.querySelector('input[type="search"]');
 const botonesAgregar = document.getElementsByClassName('agregar');
@@ -53,6 +54,7 @@ function crearCard(el) {
     return htmlCard;
 }
 
+// buscador //
 showInput = addEventListener('input', () => {
     let items = buscarNombre(arrProdFijo, inputBuscar.value);
     productosDin.innerHTML = "";
@@ -63,6 +65,7 @@ showInput = addEventListener('input', () => {
     agregarListener();
 })
 
+// muestra items en listado //
 function iniciarItems() {
     productosDin.innerHTML = "";
     for (const item of arrProdFijo) {
@@ -72,7 +75,7 @@ function iniciarItems() {
     agregarListener();
 }
 
-// boton agrega al carro // 
+// evento del boton agregar // 
 
 eventoBoton = function (e) {
     let found = buscarId(arrProdFijo, e.target.value);
@@ -82,6 +85,8 @@ eventoBoton = function (e) {
     
 };
 
+// agrego listener a todos los botones //
+
 function agregarListener() {
     let botonesAgregar = document.getElementsByClassName('agregar');
     for (const boton of botonesAgregar) {
@@ -89,6 +94,7 @@ function agregarListener() {
     }
 }
 
+// buscar item por id //
 const buscarId = (arr, filtro) => {
     const buscar = arr.find((el) => {
         return el.id == filtro
