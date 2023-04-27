@@ -42,7 +42,7 @@ function crearCard(el) {
     let htmlCard = `
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top" width="288px" height="250px">
+                    <img src="./media/${el.img}" alt="${el.nombre}" class="card-img-top" width="288px" height="250px">
                     <div class="card-body">
                         <h5 class="card-title">${el.nombre}</h5>
                         <p class="card-text">${el.descripcion}</p>
