@@ -1,10 +1,8 @@
 let local = localStorage.getItem("carrito");
 let carrito = JSON.parse(local);
-let campoTotal = document.getElementById('total');
 let arrCarrito = [];
 
 if (carrito) {
-    campoTotal.innerHTML = carrito.total
     arrCarrito = carrito.items
 
 }
@@ -34,8 +32,7 @@ function itemHtml(el) {
 
 eventoBoton = function (e) {
     arrCarrito = removerId(arrCarrito, e.target.value);
-    console.log(e.target.value);
-    let carrito = { items: arrCarrito, total: 200 };
+    let carrito = { items: arrCarrito};
     localStorage.setItem("carrito", JSON.stringify(carrito));
     refrescarItems();
 };
@@ -49,6 +46,12 @@ const removerId = (arr, filtro) => {
 
 function refrescarItems() {
     let carroItems = document.getElementById('carro_items');
+    let total = 0;
+    let campoTotal = document.getElementById('total');
+    arrCarrito.forEach(x => {
+        total += x.precio
+    });
+    campoTotal.innerHTML = total
     carroItems.innerHTML = "";
     for (const i of arrCarrito) {
 

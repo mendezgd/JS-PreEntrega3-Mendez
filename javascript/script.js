@@ -77,7 +77,7 @@ function iniciarItems() {
 eventoBoton = function (e) {
     let found = buscarId(arrProdFijo, e.target.value);
     arrCarrito.push(found);
-    let carrito = { items: arrCarrito, total: 200 };
+    let carrito = { items: arrCarrito,};
     localStorage.setItem("carrito", JSON.stringify(carrito));
     
 };
