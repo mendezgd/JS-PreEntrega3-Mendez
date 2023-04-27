@@ -34,7 +34,7 @@ function itemHtml(el) {
 // evento del boton borrar //
 eventoBoton = function (e) {
     arrCarrito = removerId(arrCarrito, e.target.value);
-    let carrito = { items: arrCarrito};
+    let carrito = { items: arrCarrito };
     localStorage.setItem("carrito", JSON.stringify(carrito));
     refrescarItems();
 };

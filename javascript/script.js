@@ -42,11 +42,11 @@ function crearCard(el) {
     let htmlCard = `
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top" width="300px" height="250px" alt="...">
+                    <img src="./media/${el.img}" alt="${el.nombre} class="card-img-top" width="288px" height="250px" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">${el.nombre}</h5>
                         <p class="card-text">${el.descripcion}</p>
-                        <button value="${el.id}" class="btn btn-primary agregar">Agregar al carro</button>
+                        <button value="${el.id}" class="btn btn-primary agregar" data-bs-toggle="button">Agregar al carro</button>
                         <p>Precio: $${el.precio}</p>
                     </div>
                 </div>
@@ -80,9 +80,9 @@ function iniciarItems() {
 eventoBoton = function (e) {
     let found = buscarId(arrProdFijo, e.target.value);
     arrCarrito.push(found);
-    let carrito = { items: arrCarrito,};
+    let carrito = { items: arrCarrito, };
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    
+
 };
 
 // agrego listener a todos los botones //
