@@ -28,6 +28,7 @@ function itemHtml(el) {
                     </div>
                     <div class="col-md-1">
                         <p class="card-text text-center pt-4">$${el.precio}</p>
+                        <button value="${el.id}" class="btn btn-danger borrar">Borrar</button>
                     </div>
                 </div>
             </div>`;
